@@ -1,7 +1,7 @@
 #include <stdio.h>
 /**
-* main - Usng printf function to print 
-* Return: 0 (Success)
+ * main - Usng printf function to print 
+ * Return: 0 (Success)
 */
 int main(void)
 {
