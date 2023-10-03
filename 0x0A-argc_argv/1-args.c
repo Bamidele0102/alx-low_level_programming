@@ -1,12 +1,10 @@
-#include <stdlib.h>
 #include <stdio.h>
-
 /**
- * main print the number of arguments passed to the program
+ * main- print the number of arguments passed to the program
  *
- * @argc stands for argument count
+ * @argc: stands for argument count
  *
- * @argv is a one-dimentional array of strings
+ * @argv: is a one-dimentional array of strings
  *
  * Return: Always 0 (Success)
  *
