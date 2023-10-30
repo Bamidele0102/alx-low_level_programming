@@ -10,8 +10,7 @@
  */
 int main(int argc, char *argv[])
 {
-	const char *file_from;
-	const char *file_to;
+	const char *file_from, *file_to;
 	int fd_from, fd_to;
 
 	if (argc != 3)
@@ -120,4 +119,3 @@ void close_file(int fd)
 		exit(100);
 	}
 }
-
