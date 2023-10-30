@@ -1,5 +1,47 @@
 #include "main.h"
 #define BUFSIZE 1024
+
+/**
+ * main - Entry point of the program.
+ * @argc: The number of command-line arguments.
+ * @argv: An array of strings representing the command-line arguments.
+ *
+ * Return: 0 on success, other values on failure.
+ */
+int main(int argc, char *argv[])
+{
+	const char *file_from;
+	const char *file_to;
+	int fd_from, fd_to;
+
+	if (argc != 3)
+	{
+		dprintf(STDERR_FILENO, "Usage: %s file_from file_to\n", argv[0]);
+		return (97);
+	}
+
+	file_from = argv[1];
+	file_to = argv[2];
+
+	fd_from = open_source_file(file_from);
+	if (fd_from < 0)
+		return (fd_from);
+
+	fd_to = create_or_open_destination_file(file_to);
+	if (fd_to < 0)
+	{
+		close_file(fd_from);
+		return (fd_to);
+	}
+
+	copy_data(fd_from, fd_to);
+
+	close_file(fd_from);
+	close_file(fd_to);
+
+	return (0);
+}
+
 /**
  * open_source_file - Open the source file for reading.
  * @file_from: The path to the source file.
@@ -78,3 +120,4 @@ void close_file(int fd)
 		exit(100);
 	}
 }
+
