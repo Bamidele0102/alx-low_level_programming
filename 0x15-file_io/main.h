@@ -5,9 +5,14 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include <stdio.h>
+
 #include <elf.h>
+
 #include <sys/types.h>
 #include <sys/stat.h>
+
+#define __home inline
+#define __silent __attribute__((unused))
 
 int _putchar(char c);
 ssize_t read_textfile(const char *filename, size_t letters);
@@ -18,6 +23,5 @@ int display_elf_header(const char *elf_filename);
 int open_source_file(const char *file_from);
 int create_or_open_destination_file(const char *file_to);
 void copy_data(int fd_from, int fd_to);
-void close_file(int fd);
 
 #endif
