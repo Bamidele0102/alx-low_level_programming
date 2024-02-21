@@ -1,9 +1,14 @@
-CC = gcc
+CC=gcc
+SRC=$(wildcard *.c)
+OBJ=$(SRC:.c=.o)
+NAME=school
 
-SRC = main.c school.c
+.PHONY: all
 
-OBJ = $(SRC:.c=.o)
-	NAME = school
+all: $(NAME)
 
-all: ${OBJ}
-	${CC} ${OBJ} -o ${NAME}
+$(NAME): $(OBJ)
+	$(CC) $^ -o $@
+
+%.o: %.c
+	$(CC) -c $< -o $@
