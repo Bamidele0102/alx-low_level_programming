@@ -8,35 +8,30 @@
  * @value: Value to search for
  *
  * Return: The index where value is located, or -1 if not found
+ *
+ * Description: Prints the [sub]array being searched after each change.
  */
 int binary_search(int *array, size_t size, int value)
 {
-	size_t left = 0;
-	size_t right = size - 1;
-	size_t mid;
+	size_t i, left, right;
 
 	if (array == NULL)
 		return (-1);
 
-	while (left <= right)
+	for (left = 0, right = size - 1; right >= left;)
 	{
 		printf("Searching in array: ");
-		for (size_t i = left; i <= right; i++)
-		{
-			printf("%d", array[i]);
-			if (i < right)
-				printf(", ");
-		}
-		printf("\n");
+		for (i = left; i < right; i++)
+			printf("%d, ", array[i]);
+		printf("%d\n", array[i]);
 
-		mid = (left + right) / 2;
-
-		if (array[mid] < value)
-			left = mid + 1;
-		else if (array[mid] > value)
-			right = mid - 1;
+		i = left + (right - left) / 2;
+		if (array[i] == value)
+			return (i);
+		if (array[i] > value)
+			right = i - 1;
 		else
-			return (mid);
+			left = i + 1;
 	}
 
 	return (-1);
